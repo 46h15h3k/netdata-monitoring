@@ -2,6 +2,8 @@
 
 A basic real-time monitoring dashboard for a Linux server using [Netdata](https://github.com/netdata/netdata), deployed and automated end-to-end with shell scripting on AWS EC2.
 
+Project URL - https://roadmap.sh/projects/simple-monitoring-dashboard
+
 ## Overview
 
 This project sets up system-level observability (CPU, memory, disk I/O) on an Amazon Linux 2023 EC2 instance, with a custom health alert and repeatable automation scripts — install, test, and teardown.
