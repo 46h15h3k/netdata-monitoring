@@ -52,7 +52,7 @@ ssh -i /path/to/key.pem -L 19999:localhost:19999 ec2-user@<EC2_PUBLIC_IP>
 # then open http://localhost:19999 in your browser
 
 # 4. Generate load and validate the dashboard/alert
-./test_dashboard.sh 60          # runs for 60 seconds
+sudo ./test_dashboard.sh 60          # runs for 60 seconds
 
 # 4. Tear down when done
 sudo ./cleanup.sh
