@@ -44,11 +44,14 @@ This project sets up system-level observability (CPU, memory, disk I/O) on an Am
 # 1. Install and configure Netdata
 sudo ./setup.sh
 
-# 2. Access the dashboard securely via SSH tunnel (run from your local machine)
+# 2. Make Scripts Executable
+chmod +x setup.sh test_dashboard.sh cleanup.sh
+
+# 3. Access the dashboard securely via SSH tunnel (run from your local machine)
 ssh -i /path/to/key.pem -L 19999:localhost:19999 ec2-user@<EC2_PUBLIC_IP>
 # then open http://localhost:19999 in your browser
 
-# 3. Generate load and validate the dashboard/alert
+# 4. Generate load and validate the dashboard/alert
 ./test_dashboard.sh 60          # runs for 60 seconds
 
 # 4. Tear down when done
