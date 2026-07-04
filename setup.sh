@@ -27,11 +27,14 @@ install_netdata() {
         return
     fi
 
-    log "Downloading Netdata kickstart script..."
-    curl -fsSL https://get.netdata.cloud/kickstart.sh -o /tmp/netdata-kickstart.sh
-
-    log "Running Netdata kickstart installer (stable channel, telemetry disabled)..."
-    sh /tmp/netdata-kickstart.sh --stable-channel --disable-telemetry --non-interactive
+    log "Installing Netdata via kickstart script (piped directly, no intermediate file)..."
+    if curl -fsSL https://get.netdata.cloud/kickstart.sh | sh -s -- --stable-channel --disable-telemetry --non-interactive; then
+        log "Netdata installation complete via primary source."
+    else
+        log "Primary source (get.netdata.cloud) failed. Falling back to GitHub mirror..."
+        curl -fsSL https://raw.githubusercontent.com/netdata/netdata/master/packaging/installer/kickstart.sh | sh -s -- --stable-channel --disable-telemetry --non-interactive
+        log "Netdata installation complete via GitHub mirror."
+    fi
 
     log "Netdata installation complete."
 }
